@@ -1,41 +1,28 @@
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
+  <view class="content tabbar-page">
+    <text>首页内容</text>
+    <button @click="updateCartBadge">更新购物车角标</button>
+  </view>
+  <view>
+    <CustomTabbar />
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const title = ref('Hello')
+import CustomTabbar from '@/components/CustomTabbar.vue'
+import { useTabbarStore } from '@/stores'
+import { onShow } from '@dcloudio/uni-app'
+
+const tabbarStore = useTabbarStore()
+
+// 页面显示时确保tabbar可见
+onShow(() => {
+  tabbarStore.toggleTabbar(true)
+})
+
+// 示例：更新购物车角标
+const updateCartBadge = () => {
+  const cartCount = Math.floor(Math.random() * 100)
+  tabbarStore.updateBadge(2, cartCount) // 索引2是购物车
+}
 </script>
-
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-</style>

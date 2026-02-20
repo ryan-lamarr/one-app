@@ -1,0 +1,52 @@
+/** 
+* src/styles/global.scss - 使用 @use 体系的变量定义
+* !default 表示"如果变量未被赋值，则使用此默认值"，这是实现主题定制的核心 
+* @use ... with 语法允许在引入时覆盖默认变量值，方便不同项目或组件使用不同的主题色等样式设置
+*/
+
+// 颜色变量
+$primary-color: #007aff !default;      // 主题色
+$success-color: #4cd964 !default;      // 成功色
+$warning-color: #ff9500 !default;      // 警告色
+$error-color: #ff3b30 !default;        // 错误色
+$text-color: #333333 !default;         // 主文字颜色
+$text-secondary: #999999 !default;     // 次要文字颜色
+
+// 字体变量
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-size-base: 14px !default;
+$font-size-large: 16px !default;
+$font-size-small: 12px !default;
+
+// 布局变量
+$spacing-base: 8px !default;           // 基础间距
+$border-radius-base: 4px !default;     // 基础圆角
+$tabbar-height: 50px !default;         // Tabbar高度（正好可以用在你的组件中）
+
+// 阴影变量
+$box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15) !default;
+.content {
+  padding-bottom: 60px; /* 与 tabbar 高度一致 */
+}
+
+.custom-tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.custom-tabbar {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+page {
+  background-color: #f5f5f5;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+}
