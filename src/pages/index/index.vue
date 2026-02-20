@@ -1,7 +1,6 @@
 <template>
   <view class="content tabbar-page">
     <text>首页内容</text>
-    <button @click="updateCartBadge">更新购物车角标</button>
   </view>
   <view>
     <CustomTabbar />
