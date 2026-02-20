@@ -1,24 +1,23 @@
 <script setup lang="ts">
-import { onLaunch } from '@dcloudio/uni-app';
+import { useTabbarStore } from '@/stores/modules/tabbar';
+import { onLaunch, onShow } from '@dcloudio/uni-app';
 
-//const tabbarStore = useTabbarStore()
-
-//const showTabbar = computed(() => tabbarStore.showTabbar)
+const tabbarStore = useTabbarStore();
 
 onLaunch(() => {
   console.log('App Launch...')
 })
 
-// onAppShow(() => {
-//   // 初始化tabbar显示状态
-//   const pages = getCurrentPages()
-//   if (pages.length > 0) {
-//     const currentPage = pages[pages.length - 1]
-//     // @ts-ignore
-//     const route = `/${currentPage.route}`
-//     tabbarStore.setCurrentByPath(route)
-//   }
-// })
+onShow(() => {
+  // 初始化tabbar显示状态
+  const pages = getCurrentPages()
+  if (pages.length > 0) {
+    const currentPage = pages[pages.length - 1]
+    // @ts-ignore
+    const route = `/${currentPage.route}`
+    tabbarStore.setCurrentByPath(route)
+  }
+})
 </script>
 
 <style lang="scss">
